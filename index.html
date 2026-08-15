@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Throne of the Changing Heavens — Forgotten Celestial Edition">
+  <title>THRONE OF THE CHANGING HEAVENS | Código 0</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- LOADER -->
+  <div id="loader" aria-hidden="true">
+    <div class="sigil"></div>
+    <h1>THRONE OF THE CHANGING HEAVENS</h1>
+    <p>FORGOTTEN CELESTIAL EDITION</p>
+  </div>
+
+  <!-- BACKGROUND -->
+  <canvas id="cosmos" aria-hidden="true"></canvas>
+  <div class="nebula-layer" aria-hidden="true"></div>
+
+  <div class="rune-field" aria-hidden="true">
+    <div class="rune r1">ᚱ</div>
+    <div class="rune r2">✦</div>
+    <div class="rune r3">☉</div>
+    <div class="rune r4">∆</div>
+    <div class="rune r5">⟁</div>
+  </div>
+
+  <div id="mouseGlow" aria-hidden="true"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" aria-label="Codex navigation">
+    <h2>CODEX</h2>
+    <nav>
+      <a href="capitulos/index.html">Chapters</a>
+      <a href="#character">Asura Cheng</a>
+      <a href="#lore">Forgotten God</a>
+      <a href="#codex">Universe Lore</a>
+      <a href="#adaptation">Adaptation Path</a>
+    </nav>
+  </aside>
+
+  <main>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-content reveal">
+        <div class="hero-sigil" aria-hidden="true"></div>
+
+        <h1>THRONE OF THE CHANGING HEAVENS</h1>
+
+        <p>
+          When heavens reject evolution...
+          adaptation becomes divinity.
+        </p>
+
+        <div class="buttons">
+          <a class="button" href="#chapter">READ CHAPTER</a>
+          <a class="button secondary" href="#codex">UNIVERSE CODEX</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- INFO -->
+    <section class="panel reveal" id="codex">
+      <div class="card">
+        <h3>NOVEL INFO</h3>
+        <ul>
+          <li>Author: Código 0</li>
+          <li>Genre: Dark Xianxia</li>
+          <li>Status: Ongoing</li>
+          <li>Current: Chapter 1</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>SYNOPSIS</h3>
+        <p>
+          A forgotten existence awakens beneath ruined heavens.
+          Asura Cheng walks the impossible path of Change.
+          Evolution. Adaptation. Transcendence.
+        </p>
+      </div>
+    </section>
+
+    <!-- READING ENGINE -->
+    <section class="reading-wrapper reveal" id="chapter">
+      <div class="reading-main">
+        <div class="progress-container" aria-label="Reading progress">
+          <div id="progressBar"></div>
+        </div>
+
+        <article class="chapter" aria-labelledby="chapter-title">
+          <div class="chapter-header">
+            <span class="chapter-tag">CHAPTER 1</span>
+
+            <h2 id="chapter-title">The Forgotten Heaven's Ashes</h2>
+
+            <p class="chapter-subtitle">
+              Asura Cheng awakens beneath a broken sky.
+            </p>
+          </div>
+
+          <div class="chapter-content">
+            <p>Cold ash descended from the ruined heavens.</p>
+
+            <p>
+              The sky no longer possessed color.
+              It had forgotten how to be alive.
+            </p>
+
+            <p>
+              Beneath collapsing celestial remains...
+              a lone figure opened his eyes.
+            </p>
+
+            <p>
+              Asura Cheng inhaled.
+              Pain. Silence. Adaptation.
+              Something impossible moved within his existence.
+            </p>
+
+            <p>
+              The laws surrounding him distorted.
+              Not cultivation. Not qi. Not destiny.
+              Change itself.
+            </p>
+
+            <p>
+              The Forgotten God had begun to awaken.
+            </p>
+          </div>
+
+          <div class="chapter-controls" aria-label="Chapter controls">
+            <button id="prevBtn" type="button" disabled>◀ Previous</button>
+            <button id="bookmarkBtn" type="button">☆ Bookmark</button>
+            <button id="shareBtn" type="button">⤴ Share</button>
+            <button id="nextBtn" type="button">Next ▶</button>
+          </div>
+
+          <p id="chapterStatus" class="chapter-status" role="status" aria-live="polite"></p>
+        </article>
+      </div>
+
+      <!-- READING SIDEBAR -->
+      <aside class="reading-sidebar" aria-label="Universe information">
+        <div class="mini-card" id="lore">
+          <h3>Universe Lore</h3>
+          <p>Adaptation supersedes fate. Evolution consumes stagnation.</p>
+        </div>
+
+        <div class="mini-card" id="character">
+          <h3>Character Database</h3>
+          <ul>
+            <li>Asura Cheng</li>
+            <li>Forgotten God</li>
+            <li>Changing Heavens</li>
+          </ul>
+        </div>
+
+        <div class="mini-card" id="adaptation">
+          <h3>Adaptation Path</h3>
+          <p>Change → Evolution → Adaptation → Transcendence.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>THRONE OF THE CHANGING HEAVENS | FORGOTTEN CELESTIAL EDITION | CÓDIGO 0</p>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
