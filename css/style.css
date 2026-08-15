@@ -594,12 +594,90 @@ footer {
 }
 
 @media (max-width: 980px) {
+
+  /* ===== SIDEBAR MOBILE ===== */
+
   .sidebar {
-    display: none;
+    width: min(80vw, 280px);
+    height: 100dvh;
+
+    padding: 30px 20px;
+
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+
+    z-index: 10000;
   }
 
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar nav {
+    gap: 12px;
+  }
+
+  .sidebar a {
+    padding: 12px 10px;
+  }
+
+  /* ===== BOTÓN CODEX ===== */
+
+  .codex-toggle {
+    display: flex;
+    position: fixed;
+
+    top: 18px;
+    left: 18px;
+
+    width: 48px;
+    height: 48px;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10001;
+
+    background: rgba(10, 10, 15, 0.9);
+    border: 1px solid var(--gold);
+
+    color: var(--gold);
+
+    font-size: 1.35rem;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+      0 0 20px rgba(0, 213, 255, 0.15);
+  }
+
+  /* ===== FONDO AL ABRIR ===== */
+
+  .codex-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s;
+
+    z-index: 9999;
+  }
+
+  .codex-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* ===== CONTENIDO ===== */
+
   .hero {
-    padding: 30px;
+    padding: 80px 25px 30px;
   }
 
   .panel {
@@ -611,7 +689,6 @@ footer {
     padding: 80px 30px;
   }
 }
-
 @media (max-width: 700px) {
   .reading-sidebar {
     grid-template-columns: 1fr;
