@@ -1,0 +1,1476 @@
+/* ==========================================================
+   THRONE OF THE CHANGING HEAVENS
+   FORGOTTEN CELESTIAL EDITION
+   STORIES SYSTEM
+========================================================== */
+
+:root {
+    --obsidian: #090909;
+    --void: #050505;
+    --purple: #2a0e45;
+    --purple-light: #57217e;
+    --gold: #b89b4f;
+    --gold-light: #e5ca79;
+    --cyan: #00d5ff;
+    --cyan-soft: #72eaff;
+    --silver: #dadada;
+    --white: #ffffff;
+
+    --stories-duration: 500ms;
+    --ease-celestial: cubic-bezier(.16, 1, .3, 1);
+    --ease-smooth: cubic-bezier(.4, 0, .2, 1);
+}
+
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(42, 14, 69, .35),
+            transparent 45%
+        ),
+        var(--void);
+    color: var(--silver);
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 5px;
+}
+
+
+/* ==========================================================
+   MAIN SECTION
+========================================================== */
+
+.stories-section {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    padding:
+        clamp(60px, 8vw, 120px)
+        clamp(20px, 5vw, 80px);
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(42, 14, 69, .20),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #050505 0%,
+            #090909 45%,
+            #110a18 100%
+        );
+}
+
+.stories-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .18;
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+    background-size: 70px 70px;
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+}
+
+
+/* ==========================================================
+   BACKGROUND
+========================================================== */
+
+.stories-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.stories-nebula {
+    position: absolute;
+    width: 55vw;
+    height: 55vw;
+    min-width: 400px;
+    min-height: 400px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .14;
+    animation: nebulaFloat 18s ease-in-out infinite alternate;
+}
+
+.stories-nebula--one {
+    top: -20%;
+    left: -10%;
+    background: var(--purple);
+}
+
+.stories-nebula--two {
+    right: -15%;
+    bottom: -20%;
+    background: var(--cyan);
+    animation-delay: -8s;
+}
+
+.stories-stars {
+    position: absolute;
+    inset: 0;
+    opacity: .45;
+    background-image:
+        radial-gradient(circle, #fff 1px, transparent 1.5px),
+        radial-gradient(circle, var(--cyan) 1px, transparent 1.5px),
+        radial-gradient(circle, var(--gold-light) 1px, transparent 1.5px);
+    background-size:
+        97px 113px,
+        157px 131px,
+        211px 179px;
+    background-position:
+        10px 20px,
+        50px 90px,
+        130px 40px;
+    animation: starsMove 35s linear infinite;
+}
+
+.stories-orbit {
+    position: absolute;
+    border: 1px solid rgba(0, 213, 255, .08);
+    border-radius: 50%;
+    transform: rotate(-25deg);
+}
+
+.stories-orbit--one {
+    width: 75vw;
+    height: 25vw;
+    left: 12%;
+    top: 30%;
+}
+
+.stories-orbit--two {
+    width: 100vw;
+    height: 35vw;
+    left: -5%;
+    top: 20%;
+    border-color: rgba(184, 155, 79, .06);
+    transform: rotate(25deg);
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.stories-header {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto clamp(40px, 7vw, 80px);
+    text-align: center;
+}
+
+.stories-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    color: var(--cyan);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(0,213,255,.5);
+}
+
+.stories-header h1 {
+    margin: 0;
+    color: var(--silver);
+    font-family: "Cinzel", serif;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 500;
+    letter-spacing: .06em;
+    line-height: 1.08;
+    text-shadow:
+        0 0 30px rgba(0,213,255,.12),
+        0 0 80px rgba(42,14,69,.4);
+}
+
+.stories-subtitle {
+    margin: 15px 0 0;
+    color: var(--gold);
+    font-family: "Cinzel", serif;
+    font-size: clamp(.85rem, 2vw, 1.15rem);
+    letter-spacing: .4em;
+    text-transform: uppercase;
+}
+
+.stories-description {
+    max-width: 620px;
+    margin: 25px auto 0;
+    color: rgba(218,218,218,.58);
+    font-size: .9rem;
+    line-height: 1.8;
+}
+
+
+/* ==========================================================
+   STORY LIST
+========================================================== */
+
+.stories-container {
+    position: relative;
+    display: flex;
+    gap: clamp(18px, 2.5vw, 34px);
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px 10px 30px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+}
+
+.stories-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.stories-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.03);
+}
+
+.stories-container::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--gold),
+            var(--cyan)
+        );
+}
+
+
+/* ==========================================================
+   STORY CARD
+========================================================== */
+
+.story-card {
+    flex: 0 0 auto;
+    width: clamp(100px, 12vw, 155px);
+}
+
+.story-trigger {
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.story-ring {
+    position: relative;
+    width: clamp(86px, 10vw, 132px);
+    aspect-ratio: 1;
+    padding: 4px;
+    border-radius: 50%;
+    background:
+        conic-gradient(
+            from 0deg,
+            var(--cyan),
+            var(--purple),
+            var(--gold),
+            var(--cyan)
+        );
+    box-shadow:
+        0 0 15px rgba(0,213,255,.18),
+        0 0 35px rgba(42,14,69,.3);
+    transition:
+        transform .5s var(--ease-celestial),
+        box-shadow .5s var(--ease-celestial);
+}
+
+.story-ring::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border: 1px solid rgba(0,213,255,.2);
+    border-radius: 50%;
+    animation: orbitalSpin 12s linear infinite;
+}
+
+.story-ring::after {
+    content: "✦";
+    position: absolute;
+    top: -10px;
+    right: 3px;
+    color: var(--gold-light);
+    font-size: 12px;
+    text-shadow: 0 0 12px var(--gold);
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.story-ring img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--obsidian);
+    border-radius: 50%;
+    object-fit: cover;
+    transition:
+        transform .6s var(--ease-celestial),
+        filter .5s ease;
+}
+
+.story-title {
+    max-width: 100%;
+    overflow: hidden;
+    color: rgba(218,218,218,.72);
+    font-family: "Cinzel", serif;
+    font-size: .68rem;
+    letter-spacing: .13em;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition:
+        color .3s ease,
+        text-shadow .3s ease;
+}
+
+.story-trigger:hover .story-ring,
+.story-trigger:focus-visible .story-ring {
+    transform:
+        translateY(-7px)
+        scale(1.06)
+        rotate(3deg);
+
+    box-shadow:
+        0 0 20px rgba(0,213,255,.35),
+        0 0 50px rgba(42,14,69,.6),
+        0 0 80px rgba(184,155,79,.1);
+}
+
+.story-trigger:hover .story-ring img,
+.story-trigger:focus-visible .story-ring img {
+    transform: scale(1.08);
+    filter: saturate(1.2) contrast(1.05);
+}
+
+.story-trigger:hover .story-title,
+.story-trigger:focus-visible .story-title {
+    color: var(--cyan-soft);
+    text-shadow: 0 0 12px rgba(0,213,255,.45);
+}
+
+.story-card.is-viewed .story-ring {
+    background:
+        conic-gradient(
+            from 0deg,
+            #514b38,
+            #292929,
+            #514b38
+        );
+    box-shadow: 0 0 15px rgba(184,155,79,.08);
+}
+
+.story-card.is-viewed .story-ring::before {
+    border-color: rgba(184,155,79,.1);
+}
+
+.story-card.is-viewed .story-title {
+    color: rgba(218,218,218,.4);
+}
+
+
+/* ==========================================================
+   VIEWER
+========================================================== */
+
+.story-viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: grid;
+    place-items: center;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--void);
+    overflow: hidden;
+    transition:
+        opacity .5s ease,
+        visibility .5s ease;
+}
+
+.story-viewer.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.viewer-backdrop {
+    position: absolute;
+    inset: -10%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(42,14,69,.65),
+            rgba(5,5,5,.96) 65%
+        );
+    filter: blur(10px);
+    transform: scale(1.1);
+}
+
+.viewer-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: .06;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+    mix-blend-mode: screen;
+}
+
+.viewer-backdrop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(0,213,255,.08),
+            transparent 35%
+        );
+}
+
+
+/* ==========================================================
+   VIEWER PARTICLES
+========================================================== */
+
+.viewer-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.viewer-particle {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    left: var(--x);
+    top: var(--y);
+    border-radius: 50%;
+    background: var(--color);
+    opacity: var(--opacity);
+    box-shadow:
+        0 0 8px var(--color),
+        0 0 20px var(--color);
+    animation:
+        particleFloat var(--duration) ease-in-out infinite alternate;
+    animation-delay: var(--delay);
+}
+
+
+/* ==========================================================
+   PROGRESS
+========================================================== */
+
+.viewer-progress {
+    position: absolute;
+    top: max(18px, env(safe-area-inset-top));
+    left: 50%;
+    z-index: 20;
+    display: flex;
+    width: min(600px, calc(100% - 140px));
+    height: 3px;
+    gap: 5px;
+    transform: translateX(-50%);
+}
+
+.viewer-progress-segment {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(255,255,255,.15);
+}
+
+.viewer-progress-segment::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--cyan),
+            var(--gold-light)
+        );
+    box-shadow: 0 0 10px var(--cyan);
+}
+
+.viewer-progress-segment.is-complete::after {
+    transform: translateX(0);
+}
+
+.viewer-progress-segment.is-active::after {
+    animation: progressFill 5s linear forwards;
+}
+
+
+/* ==========================================================
+   CLOSE
+========================================================== */
+
+.viewer-close {
+    position: absolute;
+    top: max(30px, calc(env(safe-area-inset-top) + 20px));
+    right: max(25px, calc(env(safe-area-inset-right) + 25px));
+    z-index: 30;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(0,213,255,.25);
+    border-radius: 50%;
+    background: rgba(9,9,9,.5);
+    backdrop-filter: blur(15px);
+    cursor: pointer;
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+.viewer-close span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 1px;
+    background: var(--silver);
+    transition: background .3s ease;
+}
+
+.viewer-close span:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.viewer-close span:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.viewer-close:hover {
+    transform: rotate(90deg) scale(1.08);
+    border-color: var(--cyan);
+    background: rgba(0,213,255,.1);
+    box-shadow:
+        0 0 20px rgba(0,213,255,.3),
+        inset 0 0 20px rgba(0,213,255,.05);
+}
+
+.viewer-close:hover span {
+    background: var(--cyan);
+}
+
+
+/* ==========================================================
+   NAVIGATION
+========================================================== */
+
+.viewer-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 30;
+    display: grid;
+    width: 62px;
+    height: 62px;
+    place-items: center;
+    border: 1px solid rgba(0,213,255,.2);
+    border-radius: 50%;
+    background: rgba(5,5,5,.4);
+    color: var(--silver);
+    backdrop-filter: blur(14px);
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition:
+        transform .3s var(--ease-celestial),
+        color .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease,
+        opacity .3s ease;
+}
+
+.viewer-nav span {
+    display: block;
+    margin-top: -4px;
+    font-family: Georgia, serif;
+    font-size: 42px;
+    font-weight: 200;
+    line-height: 1;
+}
+
+.viewer-prev {
+    left: max(20px, env(safe-area-inset-left));
+}
+
+.viewer-next {
+    right: max(20px, env(safe-area-inset-right));
+}
+
+.viewer-nav:hover:not(:disabled) {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: rgba(0,213,255,.08);
+    box-shadow:
+        0 0 25px rgba(0,213,255,.25),
+        inset 0 0 20px rgba(0,213,255,.05);
+}
+
+.viewer-prev:hover:not(:disabled) {
+    transform: translate(-5px, -50%);
+}
+
+.viewer-next:hover:not(:disabled) {
+    transform: translate(5px, -50%);
+}
+
+.viewer-nav:disabled {
+    opacity: .2;
+    cursor: not-allowed;
+}
+
+
+/* ==========================================================
+   VIEWER CONTENT
+========================================================== */
+
+.viewer-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    width: min(90vw, 1100px);
+    height: min(88dvh, 900px);
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+}
+
+.viewer-content.is-dragging {
+    cursor: grabbing;
+}
+
+.viewer-image-frame {
+    position: relative;
+    display: grid;
+    width: min(78vw, 850px);
+    height: min(78dvh, 760px);
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(0,213,255,.25);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,213,255,.025),
+            rgba(42,14,69,.1),
+            rgba(184,155,79,.025)
+        );
+    box-shadow:
+        0 0 30px rgba(0,213,255,.08),
+        0 0 100px rgba(42,14,69,.25),
+        inset 0 0 50px rgba(0,0,0,.4);
+    transition:
+        transform .5s var(--ease-celestial),
+        filter .4s ease,
+        opacity .4s ease;
+}
+
+.viewer-image-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,213,255,.1),
+            transparent 10%,
+            transparent 90%,
+            rgba(184,155,79,.08)
+        );
+}
+
+.viewer-image-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    box-shadow:
+        inset 0 0 100px rgba(0,0,0,.45),
+        inset 0 0 20px rgba(0,213,255,.06);
+}
+
+.viewer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition:
+        opacity .4s var(--ease-celestial),
+        transform .7s var(--ease-celestial),
+        filter .4s ease;
+}
+
+.viewer-image.is-changing-next {
+    animation: imageNext .55s var(--ease-celestial);
+}
+
+.viewer-image.is-changing-prev {
+    animation: imagePrev .55s var(--ease-celestial);
+}
+
+.viewer-image.is-loading {
+    opacity: 0;
+    filter: blur(15px);
+    transform: scale(1.04);
+}
+
+
+/* ==========================================================
+   IMAGE GLOW
+========================================================== */
+
+.viewer-image-glow {
+    position: absolute;
+    width: 60%;
+    height: 70%;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,213,255,.16),
+            rgba(42,14,69,.12) 35%,
+            transparent 70%
+        );
+    filter: blur(45px);
+    animation: auraPulse 5s ease-in-out infinite;
+}
+
+
+/* ==========================================================
+   COSMIC RINGS
+========================================================== */
+
+.viewer-cosmic-ring {
+    position: absolute;
+    border: 1px solid;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: .35;
+}
+
+.viewer-cosmic-ring--outer {
+    width: min(90vw, 1050px);
+    aspect-ratio: 1.7;
+    border-color: rgba(0,213,255,.13);
+    transform: rotate(-14deg);
+    animation: cosmicRotate 24s linear infinite;
+}
+
+.viewer-cosmic-ring--inner {
+    width: min(75vw, 850px);
+    aspect-ratio: 1.45;
+    border-color: rgba(184,155,79,.12);
+    transform: rotate(22deg);
+    animation: cosmicRotateReverse 18s linear infinite;
+}
+
+.viewer-cosmic-ring--outer::before,
+.viewer-cosmic-ring--inner::before {
+    content: "✦";
+    position: absolute;
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
+}
+
+.viewer-cosmic-ring--outer::before {
+    top: -7px;
+    left: 25%;
+}
+
+.viewer-cosmic-ring--inner::before {
+    bottom: -7px;
+    right: 20%;
+    color: var(--gold);
+    text-shadow: 0 0 15px var(--gold);
+}
+
+
+/* ==========================================================
+   CORNERS
+========================================================== */
+
+.viewer-corner {
+    position: absolute;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+}
+
+.viewer-corner::before,
+.viewer-corner::after {
+    content: "";
+    position: absolute;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+}
+
+.viewer-corner--tl {
+    top: 12px;
+    left: 12px;
+    border-top: 1px solid var(--cyan);
+    border-left: 1px solid var(--cyan);
+}
+
+.viewer-corner--tr {
+    top: 12px;
+    right: 12px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+}
+
+.viewer-corner--bl {
+    bottom: 12px;
+    left: 12px;
+    border-bottom: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+}
+
+.viewer-corner--br {
+    right: 12px;
+    bottom: 12px;
+    border-right: 1px solid var(--cyan);
+    border-bottom: 1px solid var(--cyan);
+}
+
+
+/* ==========================================================
+   SCANLINES
+========================================================== */
+
+.viewer-scanlines {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    opacity: .1;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 3px,
+            rgba(0,213,255,.12) 4px,
+            transparent 5px
+        );
+    animation: scanMove 7s linear infinite;
+}
+
+
+/* ==========================================================
+   INFO
+========================================================== */
+
+.viewer-info {
+    position: absolute;
+    right: 0;
+    bottom: -30px;
+    left: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+}
+
+.viewer-counter {
+    margin-bottom: 12px;
+    color: var(--cyan);
+    font-family: "Inter", sans-serif;
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .25em;
+    text-shadow: 0 0 12px var(--cyan);
+}
+
+.viewer-title-wrap {
+    display: flex;
+    width: min(90%, 650px);
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.viewer-title-line {
+    width: 80px;
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold)
+        );
+}
+
+.viewer-title-line:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
+}
+
+.viewer-title {
+    margin: 0;
+    color: var(--silver);
+    font-family: "Cinzel", serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-align: center;
+    text-shadow:
+        0 0 15px rgba(0,213,255,.2),
+        0 0 30px rgba(42,14,69,.6);
+    white-space: nowrap;
+}
+
+.viewer-caption {
+    margin-top: 9px;
+    color: rgba(184,155,79,.65);
+    font-size: .55rem;
+    letter-spacing: .3em;
+}
+
+
+/* ==========================================================
+   RUNES
+========================================================== */
+
+.viewer-runes {
+    position: absolute;
+    z-index: 5;
+    color: rgba(0,213,255,.12);
+    font-family: "Cinzel", serif;
+    font-size: 1.2rem;
+    letter-spacing: .6em;
+    writing-mode: vertical-rl;
+    pointer-events: none;
+    animation: runeFloat 8s ease-in-out infinite;
+}
+
+.viewer-runes--left {
+    left: 4%;
+    top: 25%;
+}
+
+.viewer-runes--right {
+    right: 4%;
+    bottom: 25%;
+    color: rgba(184,155,79,.1);
+    animation-delay: -4s;
+}
+
+
+/* ==========================================================
+   HINT
+========================================================== */
+
+.viewer-hint {
+    position: absolute;
+    right: 50%;
+    bottom: max(20px, env(safe-area-inset-bottom));
+    z-index: 20;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: rgba(218,218,218,.28);
+    font-size: .5rem;
+    letter-spacing: .25em;
+    transform: translateX(50%);
+    transition: opacity .8s ease;
+}
+
+.viewer-hint span:first-child,
+.viewer-hint span:last-child {
+    color: var(--cyan);
+    font-size: .8rem;
+}
+
+
+/* ==========================================================
+   KEYFRAMES
+========================================================== */
+
+@keyframes nebulaFloat {
+    from {
+        transform: translate3d(-2%, -2%, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(4%, 4%, 0) scale(1.08);
+    }
+}
+
+@keyframes starsMove {
+    from {
+        transform: translate3d(0,0,0);
+    }
+
+    to {
+        transform: translate3d(-80px,50px,0);
+    }
+}
+
+@keyframes orbitalSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: .4;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+}
+
+@keyframes particleFloat {
+    from {
+        transform: translate3d(0,0,0) scale(.7);
+    }
+
+    to {
+        transform: translate3d(
+            var(--move-x),
+            var(--move-y),
+            0
+        ) scale(1.25);
+    }
+}
+
+@keyframes progressFill {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes auraPulse {
+    0%, 100% {
+        opacity: .5;
+        transform: scale(.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes cosmicRotate {
+    from {
+        transform: rotate(-14deg);
+    }
+
+    to {
+        transform: rotate(346deg);
+    }
+}
+
+@keyframes cosmicRotateReverse {
+    from {
+        transform: rotate(22deg);
+    }
+
+    to {
+        transform: rotate(-338deg);
+    }
+}
+
+@keyframes scanMove {
+    from {
+        transform: translateY(-15px);
+    }
+
+    to {
+        transform: translateY(15px);
+    }
+}
+
+@keyframes runeFloat {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: .5;
+    }
+
+    50% {
+        transform: translateY(-15px);
+        opacity: 1;
+    }
+}
+
+@keyframes imageNext {
+    0% {
+        opacity: .2;
+        filter: blur(12px);
+        transform: translateX(45px) scale(.97);
+        clip-path: inset(0 0 0 20%);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0) scale(1);
+        clip-path: inset(0);
+    }
+}
+
+@keyframes imagePrev {
+    0% {
+        opacity: .2;
+        filter: blur(12px);
+        transform: translateX(-45px) scale(.97);
+        clip-path: inset(0 20% 0 0);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0) scale(1);
+        clip-path: inset(0);
+    }
+}
+
+
+/* ==========================================================
+   VIEWER ENTRY
+========================================================== */
+
+.story-viewer.is-open .viewer-content {
+    animation: viewerEnter .75s var(--ease-celestial) both;
+}
+
+.story-viewer.is-open .viewer-close {
+    animation: controlEnter .6s .15s var(--ease-celestial) both;
+}
+
+.story-viewer.is-open .viewer-nav {
+    animation: controlEnter .6s .25s var(--ease-celestial) both;
+}
+
+@keyframes viewerEnter {
+    from {
+        opacity: 0;
+        transform: scale(.9);
+        filter: blur(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes controlEnter {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ==========================================================
+   CURSOR
+========================================================== */
+
+@media (pointer: fine) {
+    .story-viewer.is-open {
+        cursor: crosshair;
+    }
+
+    .viewer-content {
+        cursor: grab;
+    }
+
+    .viewer-content.is-dragging {
+        cursor: grabbing;
+    }
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .viewer-image-frame {
+        width: min(82vw, 700px);
+        height: min(76dvh, 700px);
+    }
+
+    .viewer-nav {
+        width: 52px;
+        height: 52px;
+    }
+
+    .viewer-nav span {
+        font-size: 36px;
+    }
+
+    .viewer-info {
+        bottom: -10px;
+    }
+
+    .viewer-runes {
+        display: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .stories-section {
+        padding:
+            55px
+            12px
+            max(50px, env(safe-area-inset-bottom));
+    }
+
+    .stories-header {
+        margin-bottom: 30px;
+    }
+
+    .stories-eyebrow {
+        font-size: .55rem;
+        letter-spacing: .2em;
+    }
+
+    .stories-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .stories-subtitle {
+        font-size: .7rem;
+        letter-spacing: .25em;
+    }
+
+    .stories-description {
+        padding: 0 15px;
+        font-size: .78rem;
+    }
+
+    .stories-container {
+        gap: 17px;
+        padding-inline: 10px;
+    }
+
+    .story-card {
+        width: 90px;
+    }
+
+    .story-ring {
+        width: 78px;
+    }
+
+    .story-title {
+        font-size: .58rem;
+    }
+
+    .viewer-progress {
+        top: max(12px, env(safe-area-inset-top));
+        width: calc(100% - 90px);
+    }
+
+    .viewer-close {
+        top: max(28px, calc(env(safe-area-inset-top) + 25px));
+        right: max(15px, env(safe-area-inset-right));
+        width: 44px;
+        height: 44px;
+    }
+
+    .viewer-nav {
+        top: auto;
+        bottom: max(55px, calc(env(safe-area-inset-bottom) + 45px));
+        width: 48px;
+        height: 48px;
+        transform: none;
+    }
+
+    .viewer-nav:hover:not(:disabled) {
+        transform: scale(1.05);
+    }
+
+    .viewer-prev {
+        left: max(15px, env(safe-area-inset-left));
+    }
+
+    .viewer-next {
+        right: max(15px, env(safe-area-inset-right));
+    }
+
+    .viewer-content {
+        width: 100%;
+        height: 76dvh;
+        align-self: center;
+    }
+
+    .viewer-image-frame {
+        width: calc(100vw - 42px);
+        height: min(70dvh, 650px);
+    }
+
+    .viewer-info {
+        bottom: -15px;
+    }
+
+    .viewer-title {
+        font-size: .85rem;
+        letter-spacing: .1em;
+    }
+
+    .viewer-title-line {
+        width: 35px;
+    }
+
+    .viewer-caption {
+        font-size: .42rem;
+    }
+
+    .viewer-cosmic-ring--outer {
+        width: 130vw;
+    }
+
+    .viewer-cosmic-ring--inner {
+        width: 105vw;
+    }
+
+    .viewer-hint {
+        display: none;
+    }
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    .stories-stars,
+    .stories-nebula,
+    .story-ring::before,
+    .viewer-cosmic-ring,
+    .viewer-particles,
+    .viewer-scanlines {
+        animation: none !important;
+    }
+}
+
+
+/* ==========================================================
+   HIGH CONTRAST / PRINT SAFETY
+========================================================== */
+
+@media (forced-colors: active) {
+
+    .story-ring,
+    .viewer-nav,
+    .viewer-close,
+    .viewer-image-frame {
+        border: 1px solid ButtonText;
+    }
+
+    .viewer-nav,
+    .viewer-close {
+        color: ButtonText;
+        background: Canvas;
+    }
+}
