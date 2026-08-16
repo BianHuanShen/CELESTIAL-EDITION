@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta
+        name="description"
+        content="Throne of the Changing Heavens — Forgotten Celestial Edition"
+    >
+
+    <title>Throne of the Changing Heavens — Stories</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../css/Stories.css">
+</head>
+
+<body>
+
+<main>
+
+    <section class="stories-section" aria-labelledby="stories-heading">
+
+        <div class="stories-background" aria-hidden="true">
+            <div class="stories-nebula stories-nebula--one"></div>
+            <div class="stories-nebula stories-nebula--two"></div>
+            <div class="stories-stars"></div>
+            <div class="stories-orbit stories-orbit--one"></div>
+            <div class="stories-orbit stories-orbit--two"></div>
+        </div>
+
+        <header class="stories-header">
+            <span class="stories-eyebrow">
+                ✦ FORGOTTEN CELESTIAL ARCHIVES ✦
+            </span>
+
+            <h1 id="stories-heading">
+                Throne of the Changing Heavens
+            </h1>
+
+            <p class="stories-subtitle">
+                Forgotten Celestial Edition
+            </p>
+
+            <p class="stories-description">
+                Fragmentos de un reino perdido entre constelaciones,
+                tronos olvidados y cielos que nunca dejan de cambiar.
+            </p>
+        </header>
+
+        <div
+            class="stories-container"
+            id="storiesContainer"
+            aria-label="Historias celestiales"
+        ></div>
+
+    </section>
+
+</main>
+
+
+<!-- ==========================================================
+     STORY VIEWER
+========================================================== -->
+
+<div
+    class="story-viewer"
+    id="storyViewer"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Visor de historias"
+>
+
+    <div class="viewer-backdrop"></div>
+
+    <div class="viewer-noise" aria-hidden="true"></div>
+
+    <div class="viewer-particles" id="viewerParticles" aria-hidden="true"></div>
+
+    <div class="viewer-runes viewer-runes--left" aria-hidden="true">
+        ᛉ ✦ ᚱ ◇ ᛟ ✧ ᚦ
+    </div>
+
+    <div class="viewer-runes viewer-runes--right" aria-hidden="true">
+        ✧ ᛟ ◇ ᚱ ✦ ᛉ ᚦ
+    </div>
+
+    <div class="viewer-progress" id="viewerProgress"></div>
+
+    <button
+        class="viewer-close"
+        id="viewerClose"
+        type="button"
+        aria-label="Cerrar historias"
+    >
+        <span></span>
+        <span></span>
+    </button>
+
+    <button
+        class="viewer-nav viewer-prev"
+        id="viewerPrev"
+        type="button"
+        aria-label="Historia anterior"
+    >
+        <span>‹</span>
+    </button>
+
+    <div class="viewer-content" id="viewerContent">
+
+        <div class="viewer-cosmic-ring viewer-cosmic-ring--outer" aria-hidden="true"></div>
+        <div class="viewer-cosmic-ring viewer-cosmic-ring--inner" aria-hidden="true"></div>
+
+        <div class="viewer-image-glow" aria-hidden="true"></div>
+
+        <div class="viewer-image-frame">
+
+            <div class="viewer-corner viewer-corner--tl"></div>
+            <div class="viewer-corner viewer-corner--tr"></div>
+            <div class="viewer-corner viewer-corner--bl"></div>
+            <div class="viewer-corner viewer-corner--br"></div>
+
+            <div class="viewer-scanlines" aria-hidden="true"></div>
+
+            <img
+                class="viewer-image"
+                id="viewerImage"
+                src=""
+                alt=""
+                draggable="false"
+            >
+
+        </div>
+
+        <div class="viewer-info">
+
+            <div class="viewer-counter" id="viewerCounter">
+                01 / 10
+            </div>
+
+            <div class="viewer-title-wrap">
+                <span class="viewer-title-line"></span>
+                <h2 class="viewer-title" id="viewerTitle">
+                    Celestial I
+                </h2>
+                <span class="viewer-title-line"></span>
+            </div>
+
+            <span class="viewer-caption">
+                FRAGMENT OF THE CHANGING HEAVENS
+            </span>
+
+        </div>
+
+    </div>
+    
+    <button
+        class="viewer-nav viewer-next"
+        id="viewerNext"
+        type="button"
+        aria-label="Historia siguiente"
+    >
+        <span>›</span>
+    </button>
+
+    <div class="viewer-hint" id="viewerHint">
+        <span>←</span>
+        <span>DESLIZA PARA EXPLORAR</span>
+        <span>→</span>
+    </div>
+
+</div>
+
+
+<script src="../js/stories.js"></script>
+
+</body>
+</html>
