@@ -36,12 +36,12 @@ const stories = [
     },
     {
         id: 2,
-        image: "../images/story-02.jpg",
+        image: "../images/story-02.png",
         title: "Celestial II"
     },
     {
         id: 3,
-        image: "../images/story-03.jpg",
+        image: "../images/story-03.png",
         title: "Celestial III"
     },
     {
